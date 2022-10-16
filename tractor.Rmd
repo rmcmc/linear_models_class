@@ -34,6 +34,7 @@ ggplot(data = tractor_df, aes(x=Age, y=Maint)) +
 ```{r}
 tractor_lm <- lm(Maint ~ Age, data = tractor_df)
 tractor_lm
+
 ```
 
 ## Full mdoel summary
@@ -41,3 +42,14 @@ tractor_lm
 ```{r}
 summary(tractor_lm)
 ```
+
+## Add Prediction Data
+
+```{r}
+tractor_pred <- predict(tractor_lm)
+
+ggplot(data = tractor_df, aes(x=Age, y=Maint)) +
+  geom_point()+
+  geom_line(aes(y=tractor_pred))
+```
+
